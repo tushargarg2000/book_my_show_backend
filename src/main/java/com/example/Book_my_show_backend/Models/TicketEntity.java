@@ -20,7 +20,7 @@ public class TicketEntity {
 
     private Date booked_at;
 
-
+    //Here you will connect
     @ManyToOne
     @JoinColumn
     private UserEntity user; //
