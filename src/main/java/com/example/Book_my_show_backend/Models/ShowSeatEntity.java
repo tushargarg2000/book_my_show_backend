@@ -3,11 +3,19 @@ package com.example.Book_my_show_backend.Models;
 
 import com.example.Book_my_show_backend.Enums.SeatType;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "show_seats")
+@Builder
+@AllArgsConstructor
+@Data
+@NoArgsConstructor
 public class ShowSeatEntity {
 
     @Id
@@ -21,9 +29,7 @@ public class ShowSeatEntity {
 
     private boolean booked;
 
-
     private Date bookedAt;
-
 
     @ManyToOne
     @JoinColumn

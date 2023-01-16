@@ -1,8 +1,8 @@
 package com.example.Book_my_show_backend.Controllers;
 
 
-import com.example.Book_my_show_backend.Dtos.TheaterRequestDto;
-import com.example.Book_my_show_backend.Service.TheaterService;
+import com.example.Book_my_show_backend.Dtos.ShowRequestDto;
+import com.example.Book_my_show_backend.Service.ShowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,20 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/theater")
-public class TheaterController {
+@RequestMapping("/show")
+public class ShowController {
 
     @Autowired
-    TheaterService theaterService;
+    ShowService showService;
 
     @PostMapping("/add")
-    public String addTheater(@RequestBody TheaterRequestDto theaterRequestDto){
+    public String addShow(@RequestBody ShowRequestDto showRequestDto){
 
-        return theaterService.createTheater(theaterRequestDto);
-
+        return showService.addShow(showRequestDto);
     }
 
-    //Get theaters by theaterId
-
-    //Get all theaters
 }
