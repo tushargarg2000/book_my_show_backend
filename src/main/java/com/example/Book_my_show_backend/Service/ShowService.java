@@ -48,6 +48,15 @@ public class ShowService {
         showEntity.setTheater(theaterEntity);
         showEntity.setMovie(movieEntity);
 
+        //bcz we are doing a bidirectional mapping :
+        //Optional things :
+//        List<ShowEntity> currentListOfShow = movieEntity.getListOfShows();
+//        currentListOfShow.add(showEntity);
+//        movieEntity.setListOfShows(currentListOfShow);
+        movieEntity.getListOfShows().add(showEntity);
+        theaterEntity.getListOfShows().add(showEntity);
+        //theaterRepository.save(theaterEntity);
+
         List<ShowSeatEntity> seatEntityList = createShowSeats(theaterEntity.getTheaterSeatEntityList());
 
         showEntity.setListOfSeats(seatEntityList);
@@ -57,7 +66,9 @@ public class ShowService {
             showSeat.setShow(showEntity);
         }
 
-        showRepository.save(showEntity);
+        movieRepository.save(movieEntity);
+        theaterRepository.save(theaterEntity);
+        //showRepository.save(showEntity); this doessnt need to be called bcz parent save function is being called.
 
         return "Show added successfully";
 
